@@ -26,10 +26,7 @@ schema_view = get_schema_view(
    openapi.Info(
       title="Snippets API",
       default_version='v1',
-      description="Test description",
-      terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="contact@snippets.local"),
-      license=openapi.License(name="BSD License"),
+      description="Test project",
    ),
    public=True,
    permission_classes=[permissions.AllowAny],
@@ -38,6 +35,7 @@ schema_view = get_schema_view(
 
 api_urlpatterns = [
     path('',include('users.urls'), name="auth"),
+    path('',include('portfolio.urls'), name="portfolio"),
 ]
 
 
