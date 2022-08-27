@@ -17,6 +17,8 @@ ENV PATH="/app/.venv/bin:$PATH"
 COPY pyproject.toml poetry.lock start.sh /app/
 RUN poetry install --no-dev && chmod +x start.sh
 
+COPY . .
+
 
 #______________________________________________________________________________-
 FROM base AS dev
