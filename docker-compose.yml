@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: portfolio
+    expose:
+      - 5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  lanars:
+    image: lanars:dev
+    build:
+      target: dev
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+volumes:
+  db-data:
